@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgoraEU – Le Réseau Social Européen</title>
+
+<style>
+
+/* --- Fond animé visible --- */
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(120deg, #d7e3fc, #a3c4f3, #d7e3fc);
+  background-size: 200% 200%;
+  animation: vague 12s ease-in-out infinite;
+}
+
+@keyframes vague {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* --- Header / Bannière --- */
+header {
+  height: 33vh;
+  background: #2657A9;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.header-logo {
+  width: 240px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+/* Boutons Connexion / Inscription */
+.header-buttons {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+}
+
+.header-buttons button {
+  background: #FFD139;
+  border: none;
+  padding: 20px 30px;
+  margin-left: 10px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #003f7d;
+  font-size: 18px;
+}
+
+/* Titre principal */
+.grand-titre {
+  font-size: 56px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-align: center;
+}
+
+/* --- Main --- */
+main {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+/* --- 3 gros boutons jaunes (Découvrir + 2 sections) --- */
+.btn-big-yellow {
+  background: #FFD139;
+  color: #003f7d;
+  padding: 20px 40px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+/* On applique la même classe aux titres cliquables */
+.section h3 {
+  margin: 0 0 20px 0;
+}
+
+/* Contenu caché des sections */
+.section-content {
+  display: none;
+  background: white;
+  padding: 15px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  text-align: left;
+}
+
+/* Compteur */
+.counter {
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 20px;
+  color: #003f7d;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  margin-top: 60px;
+  padding: 20px;
+  font-size: 14px;
+  color: #FFD139;
+}
+
+</style>
+
+<script>
+// Toggle sections
+function toggleSection(id) {
+  const el = document.getElementById(id);
+  el.style.display = el.style.display === "block" ? "none" : "block";
+}
+
+// Compteur dynamique simulé
+function updateCounter() {
+  const el = document.getElementById("counter");
+  const base = 12000;
+  const variation = Math.floor(Math.random() * 3000) + 800;
+  const total = base + variation;
+  el.textContent = total.toLocaleString("fr-FR");
+}
+
+// Mise à jour toutes les 6h
+setInterval(updateCounter, 6 * 60 * 60 * 1000);
+
+window.onload = updateCounter;
+</script>
+
+</head>
+
+<body>
+
+<header>
+  <div class="header-buttons">
+    <button>Connexion</button>
+    <button>Inscription</button>
+  </div>
+
+  <img src="logo-agoraeu-full.png" alt="Logo AgoraEU" class="header-logo">
+  <h1 class="grand-titre">LE RÉSEAU SOCIAL EUROPÉEN</h1>
+</header>
+
+<main>
+
+  <!-- Bouton principal -->
+  <button class="btn-big-yellow">Découvrir AgoraEU</button>
+
+  <!-- Compteur -->
+  <div class="counter">
+    Utilisateurs en attente : <span id="counter">0</span>
+  </div>
+
+  <!-- Section 1 -->
+  <div class="section">
+    <h3 class="btn-big-yellow" onclick="toggleSection('futur')">
+      Fonctionnalités à venir ▼
+    </h3>
+    <div id="futur" class="section-content">
+      <p>• Profil citoyen européen</p>
+      <p>• Fil d’actualité intelligent</p>
+      <p>• Groupes thématiques européens</p>
+      <p>• Messagerie sécurisée</p>
+    </div>
+  </div>
+
+  <!-- Section 2 -->
+  <div class="section">
+    <h3 class="btn-big-yellow" onclick="toggleSection('fil')">
+      Mini fil d’actualité (simulation) ▼
+    </h3>
+    <div id="fil" class="section-content">
+      <p><strong>Commission Européenne :</strong> Lancement d’un nouveau programme numérique.</p>
+      <p><strong>AgoraEU :</strong> Merci aux utilisateurs en attente !</p>
+      <p><strong>Actualité :</strong> Une nouvelle initiative citoyenne voit le jour.</p>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div>© Tous droits réservés – reproduction interdite</div>
+  <div>Basé en France</div>
+</footer>
+
+</body>
+</html>
